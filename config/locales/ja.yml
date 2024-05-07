@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "名前が空欄です"
+            email:
+              blank: "メールアドレスが空欄です"
+            password:
+              blank: "パスワードが空欄です"

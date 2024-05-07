@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2Ver2</title>
+    <title>PetCommunity</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,6 +21,14 @@
      </div>
     
       <main>
+       <p class="notice"><%= notice %></p>
+       <p class="alert">
+         <% if flash[:alert] == 'Invalid Email or password.' %>
+           メールアドレス、またはパスワードが入力されていません。
+         <% else %>
+           <%= alert %>
+         <% end %>
+       </p>
         <p id="notice"><%= notice %></p>
         <%= yield %>
       </main>
