@@ -1,10 +1,16 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
   
+  <% if flash[:error].present? %>
+  <div class="alert">
+    <%= flash[:error].gsub(", ", ",<br>").html_safe %>
+  </div>
+  <% end %>
+  
   <div class="field">
-  <%= f.label :name, "ハンドルネーム" %><br>
+  <%= f.label :name%><br>
   <%= f.text_field :name %>
   </div>
 

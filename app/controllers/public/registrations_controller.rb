@@ -59,11 +59,21 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def create
+  super do |resource|
+    if resource.errors.any?
+      flash[:error] = resource.errors.full_messages.join(', ')
+      redirect_to new_user_registration_path
+      return
+    end
+  end
+  end
+  
   
    private
 
   def after_sign_in_path(resource)
-    public_root_path
+    root_path
   end
 
 
