@@ -23,8 +23,8 @@ root to: 'public/homes#top'
 
 
     get 'users/show' => 'users#show', as: :user
-    get 'users/infomation/edit' => 'users#edit', as: :infomation_edit
-    patch 'users/my_page' => 'users#update', as: :infomation
+    get 'users/infomation/edit' => 'users#edit', as: :information_edit
+    patch 'users/my_page' => 'users#update', as: :information
     get 'users/my_page' => 'users#mypage', as: :my_page
     get 'users/unsubscribe' => 'users#unsubscribe', as: :unsubscribe
     patch 'users/withdraw' => 'users#withdraw', as: :withdraw

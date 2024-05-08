@@ -1,4 +1,11 @@
-マイページ予定地
+<h3>マイページ</h3>
 <p>名前
-<%= @user.name %>
-</p>
+<%= @user.name %><br>
+<%= @user.email %>
+
+<p>いいねした投稿</p>
+<p>フォロー一覧（リンク）</p>
+<p>フォロワー一覧(リンク)</p>
+
+
+<div class="mx-5"><%= link_to "編集する", public_information_edit_path, class: 'btn btn-sm btn-success' %></div>
