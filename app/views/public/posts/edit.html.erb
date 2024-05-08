@@ -1,2 +1,37 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="col-md-2 offset-1">
+  <h3 class="my-3 bg-light text-center"><strong>投稿編集</strong></h3>
+</div>
+ <div class ="row">
+ <div class = "col-6 mx-auto">
+     <p>投稿画像ビュー</p>
+ <%= image_tag @post.image, size: "200x200" %>
+ </div>
+ </div>
+<%= form_with model: @post, url: public_post_path, method: :patch, class: 'col-6 mx-auto' do |f| %>
+
+  <div class="form-group row">
+    <%= f.label :image, '画像', class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.file_field :image %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :title, 'タイトル', class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :body, '内容', class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.submit '変更を保存する', class: 'btn btn-success text-white' %>
+    </div>
+  </div>
+<% end %>
