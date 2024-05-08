@@ -5,11 +5,7 @@ def admin_url
   request.fullpath.include?("/admin")
 end
 
-def exist_post?
-  unless Post.find_by(id: params[:id])
-     redirect_to public_posts_path
-  end
-end
+
 
 
 

@@ -2,8 +2,9 @@
   <% @post.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to public_post_path(post.id) do %>
-       <%= image_tag post.image, size: "50x50" %>
-      <%#= image_tag post_image.get_image, class: "card-img-top"; %>
+      <% if post.image.present? %>
+        <%= image_tag post.image, size: "50x50" %>
+      <% end %>
     <% end %>
     <div class="card-body">
       <div class="row">
@@ -17,6 +18,7 @@
             <% end %>
           </p>
           <p class="card-text">説明：<%= post.body %></p>
+          <%= link_to "Show", public_post_path(post.id), class: "show-button" %>
           <span><i class="fas fa-user"></i> By <%= post.user.name %>  </span>
           <span><%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark" %></span>
         </div>

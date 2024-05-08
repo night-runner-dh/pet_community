@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :exist_post?, only: [:show, :edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update]
   
   
   def new
@@ -39,14 +39,19 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to public_post_path(@post), notice: "編集に成功しました。"
     else
-      render :new
+      @post = Post.find(params[:id])
+      flash[:alert] = "編集に失敗しました。"  # バリデーションメッセージをセット
+      render :edit
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to public_posts_path
+    if @post.destroy!
+      redirect_to public_posts_path, notice: "削除に成功しました。"
+    else
+      redirect_to public_post_path(@post), alert: "削除に失敗しました。"
+    end
   end
   
   
@@ -55,6 +60,14 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :image)
   end
+  
+  def is_matching_login_user
+    @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+    redirect_to root_path
+    end
+  end
+  
   
   
 end
