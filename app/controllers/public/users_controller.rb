@@ -4,6 +4,10 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def index
+    @user = User.all
+  end
+
   def edit
     @user = current_user
   end
