@@ -47,13 +47,18 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy!
-      redirect_to public_posts_path, notice: "削除に成功しました。"
+    if @post.destroy
+        respond_to do |format|
+          format.html { redirect_to public_posts_path, notice: "削除に成功しました。" }
+          format.js   # 追加する部分
+        end
     else
-      redirect_to public_post_path(@post), alert: "削除に失敗しました。"
+        respond_to do |format|
+          format.html { redirect_to public_post_path(@post), alert: "削除に失敗しました。" }
+          format.js   # 追加する部分
+        end
     end
   end
-  
   
   private
 
