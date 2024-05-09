@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  
+  before_action :require_login, only: [:new]
+
   
   def new
     @post = Post.new
@@ -73,6 +74,10 @@ class Public::PostsController < ApplicationController
     end
   end
   
-  
+  def require_login
+    unless current_user
+      redirect_to root_path
+    end
+  end
   
 end
