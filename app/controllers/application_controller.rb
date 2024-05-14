@@ -12,11 +12,11 @@ end
 def after_sign_in_path_for(resource)
   case resource
    when Admin
-     admin_path
+     admin_homes_top_path
    when User
      public_homes_top_path
    else
-     root_path
+     public_homes_about_path
   end
 end
 end

@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, :require_login, only: [:edit, :update]
   before_action :require_login, only: [:new]
 
   
@@ -14,21 +14,24 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+  
+  def my_posts
+    @posts = Post.where(user_id: current_user.id)
+  end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     
     if @post.save
-      flash[:notice] = "投稿しました。."
+      flash[:notice] = "投稿しました。"
       redirect_to public_posts_path(@post), notice: "投稿しました。"
     else
       flash[:alert] = "投稿に失敗しました。"
       @posts = Post.all
-      flash[:redirect] = root_path
-      redirect_to root_path
+      flash[:redirect] = new_public_post_path
+      render :"public/posts/new"
     end
-      
   end
 
   def edit
@@ -69,7 +72,7 @@ class Public::PostsController < ApplicationController
   
   def is_matching_login_user
     @post = Post.find(params[:id])
-    unless @post.user.id == current_user.id
+    unless current_user && @post.user.id == current_user.id
     redirect_to root_path
     end
   end

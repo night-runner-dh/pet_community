@@ -20,17 +20,17 @@ root to: 'public/homes#top'
 
     get 'homes/top'
     get 'homes/about'
-
     get 'users' => 'users#index', as: :users 
-    get 'users/show' => 'users#show', as: :user
     get 'users/infomation/edit' => 'users#edit', as: :information_edit
     patch 'users/my_page' => 'users#update', as: :information
     get 'users/my_page' => 'users#mypage', as: :my_page
     get 'users/unsubscribe' => 'users#unsubscribe', as: :unsubscribe
     patch 'users/withdraw' => 'users#withdraw', as: :withdraw
     
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    get 'post/my_posts_index/' => 'posts#my_posts', as: :my_posts
     
+    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :users, only: [:show]
     
   end
   namespace :admin do

@@ -1,5 +1,11 @@
 ja:
   activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        body: "本文"
+      user:
+        name: "ハンドルネーム"
     errors:
       models:
         user:
@@ -10,3 +16,14 @@ ja:
               blank: "アドレスが空欄です"
             password:
               blank: "が空欄です"
+        post:
+          attributes:
+            title:
+              blank: "が空です"
+            body:
+              blank: "が空です"
+        messages:
+          blank: "が空です"
+      messages:
+        record_invalid: "無効なレコードです"
+        

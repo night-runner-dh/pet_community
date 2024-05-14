@@ -1,1 +1,33 @@
-<p>ユーザー一覧予定</p>
+<div class="container px-5 px-sm-0">
+   <div class="row">  
+
+ <div class="col-md-8 offset-md-1">
+  <table class="table">
+  <h2>ユーザー一覧</h2>
+ 
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+     <% if user.id != current_user.id %>
+      <tr>
+        <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to 'Show', public_user_path(id: user.id) %></td>
+        <td>フォロー数: <%#= user.followings.count %></td>
+        <td>フォロワー数: <%#= user.followers.count %></td>
+        <td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
+        
+      </tr>
+     <% end %>
+    <% end %>
+    
+    <%#= link_to "グループを作成する", new_group_path %>｜<%#= link_to "グループ一覧", groups_path %>
+  </tbody>
+</table>
