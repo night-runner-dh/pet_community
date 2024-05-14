@@ -20,4 +20,22 @@ class User < ApplicationRecord
   # フォロワーを取得
   #has_many :followers, through: :passive_relationships, source: :follower
   
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+      #今回前方一致、後方一致の検索方法は採用しない為
+    #elsif search == "forward_match"
+      #@user = User.where("name LIKE?","#{word}%")
+    #elsif search == "backward_match"
+      #@user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+  
+  
+  
 end
