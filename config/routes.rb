@@ -26,6 +26,7 @@ root to: 'public/homes#top'
     get 'users/my_page' => 'users#mypage', as: :my_page
     get 'users/unsubscribe' => 'users#unsubscribe', as: :unsubscribe
     patch 'users/withdraw' => 'users#withdraw', as: :withdraw
+    get "search" => "searches#search", as: :search
     
     get 'post/my_posts_index/' => 'posts#my_posts', as: :my_posts
     
