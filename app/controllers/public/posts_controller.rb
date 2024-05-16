@@ -18,6 +18,7 @@ class Public::PostsController < ApplicationController
   
   def my_posts
     @posts = Post.where(user_id: current_user.id)
+    
   end
 
   def create

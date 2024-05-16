@@ -1,2 +1,12 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h3>マイページ</h3>
+<p>名前
+<%= @user.name %><br>
+<%= @user.email %>
+画面が寂しいのでプロフィール画像つけてもいいかも？
+
+
+<p><%= link_to "投稿一覧", public_my_posts_path(@post) %></p>
+
+<p>実装予定リンク</p>
+
+<div class="mx-5"><%= link_to "編集する", edit_admin_user_path, class: 'btn btn-sm btn-success' %></div>
