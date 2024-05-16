@@ -16,6 +16,7 @@
     <th>フォロワー</th>
     <th><%#= link_to user.followers.count, user_followers_path(user) %></th>
   </tr>
+   <p><%= link_to "#{post.post_comments.count} コメント", public_post_path(post.id) %></p>
    <td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
    <td></td>
 </table>
