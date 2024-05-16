@@ -32,6 +32,7 @@ root to: 'public/homes#top'
     
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
+      resource :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show] do
        resources :favorites, only: [:index]

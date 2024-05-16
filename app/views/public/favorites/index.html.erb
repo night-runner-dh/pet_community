@@ -18,7 +18,7 @@
           </p>
           <p class="card-text">説明：<%= post_favorite.post.body %></p>
           <%= link_to "Show", public_post_path(post_favorite.post.id), class: "show-button" %>
-          <span><i class="fas fa-user"></i> By <%= post_favorite.user.name %>  </span>
+          <span><i class="fas fa-user"></i> By <%= post_favorite.post.user.name %>  </span>
         </div>
       </div>
     </div>
