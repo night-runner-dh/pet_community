@@ -1,4 +1,11 @@
-<%= link_to '戻る', :back %>
+<div class = "container mt-5 mr-5" >
+<div class = "col mx-auto">
+
+<%= link_to '戻る', 'javascript:history.back()', class: "mr-4" %>
+ <% if @post.user == current_user %>
+    <%= link_to '編集する', edit_public_post_path(@post.id), class: "btn  btn-success mr-4" %>
+    <%= link_to "削除", public_post_path(@post), class: "btn alert-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+ <% end %>
 <div>
   <%if @post.image.present? %>
    <%= image_tag @post.image, size: "400x400" %>
@@ -8,10 +15,7 @@
   <p>投稿ユーザー画像：<%#= image_tag @post_image.user.get_profile_image(100,100) %></p>
   <p>ユーザーネーム：<%= @post.user.name %></p>
   <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @post.user == current_user %>
-    <%= link_to "削除", public_post_path(@post), class: "btn alert-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
- 　  <%= link_to '編集する', edit_public_post_path(@post.id), class: "btn  btn-success" %>
-   <% end %>
+ 
  
   <% if current_user %>
     <% if @post.favorited?(current_user) %>
@@ -47,10 +51,13 @@
  <% end %>
 </div>
 <div>
-  <%= form_with url:  public_post_post_comments_path(@post) do |f| %>
-  <%#= form_with model: [@post, @post_comment] do |f| %>
-  <%= f.text_area :comment, rows: '5', placeholder: "コメントは、ここに入力してください" %>
-  <%= f.submit "送信する" %>
+  <% if current_user %>
+  <%= form_with url: public_post_post_comments_path(@post) do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントは、ここに入力してください" %>
+    <%= f.submit "送信する" %>
   <% end %>
-  
+<% end %>
+</div>
+
+</div>
 </div>

@@ -11,15 +11,17 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <div class="container">
+    <div class="mx-auto">
     <%= render 'layouts/search' %>
     
-    <div class="container">
       <div class="row">
          <div class="col-md-12 text-center">
            <%#= render 'searches/search' %>
          </div>
        </div>
      </div>
+    
     
       <main>
        <p class="alert">
@@ -33,5 +35,6 @@
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

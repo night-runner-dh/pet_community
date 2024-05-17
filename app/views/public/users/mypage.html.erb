@@ -1,6 +1,5 @@
 <h3>マイページ</h3>
-<p>名前
-<%= @user.name %></p>
+<p>名前<%= @user.name %></p>
 <p>メールアドレス <%= @user.email %></p>
 画面が寂しいのでプロフィール画像つけてもいいかも？
 
@@ -8,8 +7,7 @@
 <p><%= link_to "自身の投稿一覧", public_my_posts_path %></p>
 
 <p>実装予定リンク</p>
-<p>いいねした投稿一覧（リンク）</p>
-<%= link_to "いいねした投稿一覧",public_user_favorites_path(user_id: current_user.id) %>
+<p><%= link_to "いいねした投稿一覧",public_user_favorites_path(user_id: current_user.id) %></p>
 <p>フォロー一覧（リンク）</p>
 <p>フォロワー一覧(リンク)</p>
 

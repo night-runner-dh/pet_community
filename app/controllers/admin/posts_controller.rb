@@ -8,7 +8,9 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def edit
+  def my_posts
+   @user = User.find(params[:user_id])
+  @posts = Post.where(user_id: @user.id)
   end
 
   def destroy

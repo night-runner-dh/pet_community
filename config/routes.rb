@@ -42,10 +42,10 @@ root to: 'public/homes#top'
   namespace :admin do
     get 'homes/top' => 'homes#top', as: :homes_top
     get 'homes/about'
-
+    get 'posts/my_posts' => 'posts#my_posts', as: :my_posts
     resources :users, only: [:show,:edit,:update]
   
-    resources :posts, only: [:show, :edit, :update, :index]
+    resources :posts, only: [:show,:update, :index]
   
   end
 
