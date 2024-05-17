@@ -28,7 +28,7 @@ root to: 'public/homes#top'
     patch 'users/withdraw' => 'users#withdraw', as: :withdraw
     get 'search' => 'searches#search', as: :search
     
-    get 'post/my_posts_index/' => 'posts#my_posts', as: :my_posts
+    get 'post/my_posts/' => 'posts#my_posts', as: :my_posts
     
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
@@ -40,13 +40,12 @@ root to: 'public/homes#top'
     
   end
   namespace :admin do
-    get 'homes/top'
+    get 'homes/top' => 'homes#top', as: :homes_top
     get 'homes/about'
-
 
     resources :users, only: [:show,:edit,:update]
   
-    resources :posts, only: [:show, :edit, :update]
+    resources :posts, only: [:show, :edit, :update, :index]
   
   end
 

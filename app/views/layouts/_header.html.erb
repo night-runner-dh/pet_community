@@ -38,6 +38,29 @@
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
+          
+        <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to admin_homes_top_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> ユーザー一覧 (管理用）
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_posts_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> 投稿一覧 (管理用)
+            <% end %>
+          </li>          
+          <li>
+            <%#=  link_to まだルートしてないpath ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> グループ一覧 (管理用)
+            <%# end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+          
         <% else %>
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
