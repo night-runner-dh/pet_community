@@ -3,8 +3,14 @@
 <h3>ユーザー情報</h3>
 <p>名前 <%= @user.name %></p>
 <p>メールアドレス <%= @user.email %></p>
+<span>ユーザーステータス</span>
+<% if @user.is_active? %>
+  <span class="text-success">　有効</span>
+<% else %>
+  <span class="text-muted">　退会</span>
+<% end %>
 
-画面が寂しいのでプロフィール画像つけてもいいかも？
+<p>画面が寂しいのでプロフィール画像つけてもいいかも？</p>
 
 <div><p><%= link_to "投稿一覧", admin_my_posts_path(user_id: @user.id) %></p></div>
 

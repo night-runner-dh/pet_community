@@ -20,8 +20,6 @@
           <p class="card-text">説明：<%= post.body %></p>
           <%= link_to "Show", admin_post_path(post.id), class: "show-button" %>
           <span><i class="fas fa-user"></i> By <%= post.user.name %>  </span>
-          <p><%= link_to "#{post.post_comments.count} コメント", public_post_path(post.id) %></p>
-          <%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark" %>
         </div>
       </div>
     </div>

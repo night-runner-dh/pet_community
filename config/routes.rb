@@ -28,6 +28,7 @@ root to: 'public/homes#top'
     patch 'users/withdraw' => 'users#withdraw', as: :withdraw
     get 'search' => 'searches#search', as: :search
     
+    get 'posts/image_index' => 'posts#image_index', as: :image_index
     get 'post/my_posts/' => 'posts#my_posts', as: :my_posts
     
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
