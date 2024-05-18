@@ -1,36 +1,73 @@
 <h2>検索一覧</h2>
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
-  <% if @range == "User" %>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
+<!--検索対象モデルがUserの時 -->
+  <% if admin_signed_in? %>
+    <% if @range == "User" %>
+      <tbody>
+        <% @users.each do |user| %>
+         <tr>
            <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
-          <td><%= user.name %></td>
-          <td><%= link_to 'Show', public_user_path(id: user.id) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <tbody>
-      <tr>
-        <td></td>
-         <td>タイトル</td>
-        <td>Opinion</td>
-      </tr>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%#= image_tag book.user.get_profile_image, size:'50x50' %></td>
-          <td>
-           <%= link_to(public_post_path(post.id), class: "text-dark") do %>
-             <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
-           <% end %>
-          </td>
-          <td><%= post.body %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>
+             <td><%= user.name %></td>
+               <td><%= link_to 'Show', admin_user_path(id: user.id) %></td>
+         </tr>
+        <% end %>
+        </tbody>
+        <% else %>
+          <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+          <tbody>
+            <tr>
+              <td></td>
+              <td>タイトル</td>
+              <td>Opinion</td>
+            </tr>
+            <% @posts.each do |post| %>
+            <tr>
+              <td><%#= image_tag book.user.get_profile_image, size:'50x50' %></td>
+              <td>
+                <%= link_to(admin_post_path(post.id), class: "text-dark") do %>
+                  <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
+                <% end %>
+              </td>
+              <td><%= post.body %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        <% end %>
 </table>
+  <% else %>
+    <table class="table table-hover table-inverse">
+    <!--検索対象モデルがUserの時 -->
+    <% if @range == "User" %>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+             <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
+            <td><%= user.name %></td>
+            <td><%= link_to 'Show', public_user_path(id: user.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% else %>
+      <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+      <tbody>
+        <tr>
+          <td></td>
+           <td>タイトル</td>
+          <td>Opinion</td>
+        </tr>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%#= image_tag book.user.get_profile_image, size:'50x50' %></td>
+            <td>
+             <%= link_to(public_post_path(post.id), class: "text-dark") do %>
+               <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
+             <% end %>
+            </td>
+            <td><%= post.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+    </table>
+  <% end %>
