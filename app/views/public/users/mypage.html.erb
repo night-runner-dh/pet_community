@@ -8,6 +8,15 @@
 
 <p>実装予定リンク</p>
 <p><%= link_to "いいねした投稿一覧",public_user_favorites_path(user_id: current_user.id) %></p>
+
+
+
+    <p>follows</p>
+    <p><%= link_to @user.followings.count, public_user_followings_path(@user) %></p>
+    <p>followers</p>
+    <p><%= link_to @user.followers.count, public_user_followers_path(@user) %></p>
+
+
 <p>フォロー一覧（リンク）</p>
 <p>フォロワー一覧(リンク)</p>
 
