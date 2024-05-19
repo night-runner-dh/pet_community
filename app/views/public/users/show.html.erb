@@ -1,20 +1,27 @@
-<table class='table'>
+<div class="container px-5 px-sm-0">
+   <div class="row">  
+ <div class="col-md-8 offset-md-1">
+  
+<h2>ユーザー詳細</h2>
+<div class = "mt-4">プロフィール画像
+<%= image_tag "shiba1.jpg", size: "200x200" %>
+</div>
+
+<table class="table mt-4">
   <tr><%#= image_tag user.get_profile_image, size:'100x100' %></tr>
   <tr>
 	  <th>ハンドルネーム:</th>
 	  <th><%= @user.name %></th>
   </tr>
   <tr>
-	  <th>プロフィール画像</th>
-	  <th><%#= user.introduction %></th>
-  </tr>
-  <tr>
     <th>フォロー</th>
-    <th><%#= link_to user.followings.count, user_followings_path(user) %></th>
+    <th>ここにフォローのリンクが来るよ
+      <%#= link_to user.followings.count, user_followings_path(user) %></th>
   </tr>
   <tr>
     <th>フォロワー</th>
-    <th><%#= link_to user.followers.count, user_followers_path(user) %></th>
+    <th>ここにフォロワーのリンクが来るよ
+      <%#= link_to user.followers.count, user_followers_path(user) %></th>
   </tr>
    <td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
    <td></td>
