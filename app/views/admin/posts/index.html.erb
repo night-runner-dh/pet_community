@@ -1,7 +1,7 @@
 <div class="card-list-container py-5">
   <% @post.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
-    <%= link_to public_post_path(post.id) do %>
+    <%= link_to admin_post_path(post.id) do %>
       <% if post.image.present? %>
         <%= image_tag post.image, size: "50x50" %>
       <% end %>
@@ -13,14 +13,13 @@
         </div>
         <div class="col-10">
           <p class="card-title">
-            <%= link_to(public_post_path(post.id), class: "text-dark") do %>
+            <%= link_to(admin_post_path(post.id), class: "text-dark") do %>
               <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
             <% end %>
           </p>
           <p class="card-text">説明：<%= post.body %></p>
-          <%= link_to "Show", public_post_path(post.id), class: "show-button" %>
+          <%= link_to "Show", admin_post_path(post.id), class: "show-button" %>
           <span><i class="fas fa-user"></i> By <%= post.user.name %>  </span>
-          <p><%= link_to "#{post.post_comments.count} コメント", public_post_path(post.id) %></p>
         </div>
       </div>
     </div>
