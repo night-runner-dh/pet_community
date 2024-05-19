@@ -1,0 +1,27 @@
+<div class="card-list-container py-5">
+  <% @post_favorites.each do |post_favorite| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= link_to public_post_path(post_favorite.post.id) do %>
+      <% if post_favorite.post.image.present? %>
+        <%= image_tag post_favorite.post.image, size: "50x50" %>
+      <% end %>
+    <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to(public_post_path(post_favorite.post.id), class: "text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= post_favorite.post.title %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-text">説明：<%= post_favorite.post.body %></p>
+          <%= link_to "Show", public_post_path(post_favorite.post.id), class: "show-button" %>
+          <span><i class="fas fa-user"></i> By <%= post_favorite.post.user.name %>  </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

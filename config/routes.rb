@@ -26,22 +26,27 @@ root to: 'public/homes#top'
     get 'users/my_page' => 'users#mypage', as: :my_page
     get 'users/unsubscribe' => 'users#unsubscribe', as: :unsubscribe
     patch 'users/withdraw' => 'users#withdraw', as: :withdraw
-    get "search" => "searches#search", as: :search
+    get 'search' => 'searches#search', as: :search
     
-    get 'post/my_posts_index/' => 'posts#my_posts', as: :my_posts
+    get 'posts/image_index' => 'posts#image_index', as: :image_index
+    get 'post/my_posts/' => 'posts#my_posts', as: :my_posts
     
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
-    resources :users, only: [:show]
+    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+      resource :post_comments, only: [:create, :destroy]
+    end
+    resources :users, only: [:show] do
+       resources :favorites, only: [:index]
+    end
     
   end
   namespace :admin do
-    get 'homes/top'
+    get 'homes/top' => 'homes#top', as: :homes_top
     get 'homes/about'
-
-
+    get 'posts/my_posts' => 'posts#my_posts', as: :my_posts
     resources :users, only: [:show,:edit,:update]
   
-    resources :posts, only: [:show, :edit, :update]
+    resources :posts, only: [:show,:update, :index]
   
   end
 

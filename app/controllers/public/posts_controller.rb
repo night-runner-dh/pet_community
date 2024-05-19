@@ -13,12 +13,18 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
   
   def my_posts
     @posts = Post.where(user_id: current_user.id)
+    
   end
-
+  
+  def image_index
+    @posts = Post.all
+  end
+  
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id

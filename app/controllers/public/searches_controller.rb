@@ -1,5 +1,6 @@
 class Public::SearchesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user_or_admin!
+  #before_action :authenticate_user!
 
   def search
     @range = params[:range]
@@ -11,5 +12,9 @@ class Public::SearchesController < ApplicationController
       @posts = Post.looks(params[:search], params[:word])
     end
   end
+
+def authenticate_user_or_admin!
+  authenticate_user! unless admin_signed_in?
+end
 
 end
