@@ -36,7 +36,10 @@ root to: 'public/homes#top'
       resource :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show] do
-       resources :favorites, only: [:index]
+      resources :favorites, only: [:index]
+      resource :relationships, only: [:create, :destroy]
+  	  get "followings" => "relationships#followings", as: "followings"
+  	  get "followers" => "relationships#followers", as: "followers"
     end
     
   end

@@ -12,17 +12,19 @@
   <tr>
 	  <th>ハンドルネーム:</th>
 	  <th><%= @user.name %></th>
+	  <td><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></td>
   </tr>
   <tr>
     <th>フォロー</th>
-    <th>ここにフォローのリンクが来るよ
-      <%#= link_to user.followings.count, user_followings_path(user) %></th>
+    <td>フォロー数: <%= @user.followings.count %></td>
+    <td></td>
   </tr>
   <tr>
     <th>フォロワー</th>
-    <th>ここにフォロワーのリンクが来るよ
-      <%#= link_to user.followers.count, user_followers_path(user) %></th>
+     <td>フォロワー数: <%= @user.followers.count %></td>
+    <td></td>
   </tr>
-   <td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
+   <td></td>
+   <td></td>
    <td></td>
 </table>
