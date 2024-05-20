@@ -1,3 +1,4 @@
+<div class = "container">
 <h3>マイページ</h3>
 <p>名前<%= @user.name %></p>
 <p>メールアドレス <%= @user.email %></p>
@@ -9,16 +10,16 @@
 <p>実装予定リンク</p>
 <p><%= link_to "いいねした投稿一覧",public_user_favorites_path(user_id: current_user.id) %></p>
 
+<div>
+<%= link_to "フォロー 一覧", public_user_followings_path(@user) %> 
+フォロー数: <%= @user.followings.count %>
+</div>
 
+<div>
+<%= link_to "フォロワー一覧", public_user_followers_path(@user) %>
+フォロワー数:<%= @user.followers.count %>
+</div>
 
-    <p>follows</p>
-    <p><%= link_to @user.followings.count, public_user_followings_path(@user) %></p>
-    <p>followers</p>
-    <p><%= link_to @user.followers.count, public_user_followers_path(@user) %></p>
-
-
-<p>フォロー一覧（リンク）</p>
-<p>フォロワー一覧(リンク)</p>
-
-
+<p></p>
 <div class="mx-5"><%= link_to "編集する", public_information_edit_path, class: 'btn btn-sm btn-success' %></div>
+</div>
