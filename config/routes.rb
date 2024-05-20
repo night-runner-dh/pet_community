@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'groups/new'
+    get 'groups/index'
+    get 'groups/show'
+    get 'groups/edit'
+  end
   # 会員用
 # URL /users/sign_in ...
 devise_for :users, controllers: {
@@ -41,6 +47,8 @@ root to: 'public/homes#top'
   	  get "followings" => "relationships#followings", as: "followings"
   	  get "followers" => "relationships#followers", as: "followers"
     end
+    
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update]
     
   end
   namespace :admin do
