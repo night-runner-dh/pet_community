@@ -48,7 +48,9 @@ root to: 'public/homes#top'
   	  get "followers" => "relationships#followers", as: "followers"
     end
     
-    resources :groups, only: [:new, :index, :show, :create, :edit, :update]
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+      resource :group_users, only: [:create, :destroy]
+    end
     
   end
   namespace :admin do
