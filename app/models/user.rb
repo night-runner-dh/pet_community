@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+  has_many :group_comments, dependent: :destroy
+  
   
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォローされている関連付け

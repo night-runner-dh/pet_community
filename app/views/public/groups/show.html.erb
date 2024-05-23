@@ -44,3 +44,30 @@
 
   </div>
 </div>
+<% @group.group_comments.each do |group_comment| %>
+   <p><%= group_comment.comment %></p>
+   by <%= group_comment.user.name %>
+   <%= group_comment.created_at.strftime('%Y/%m/%d') %>
+  <% if group_comment.user == current_user %>
+  <%= button_to "コメント削除", public_group_group_comment_path(group_comment.id), method: :delete %>
+  <% end %>
+ <% end %>
+ <%= form_with url: public_group_group_comments_path(@group) do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントは、ここに入力してください" %>
+    <%= f.submit "送信する" %>
+<% end %>
+<%# @group_comments.each do |group_comment| %>
+        <!--<hr>
+        <div>
+            <li>内容：<%#= group_comment.comment %></li>
+            <li><%#= group_comment.user.username %>さんのメッセージ</li><li><%#= group_comment.created_at %>に送信済み</li>
+        </div>
+        <hr>-->
+<%# end %>
+
+
+<%#= form_with url: public_group_group_comments_path(@group.id), model: @group_comment do |f| %>
+  <%#= f.hidden_field :group_id, value: @group.id %>
+  <%#= f.text_area :comment %>
+  <%#= f.submit %>
+<%# end %>

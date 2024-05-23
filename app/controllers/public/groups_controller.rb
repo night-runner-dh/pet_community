@@ -9,7 +9,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @user = User.find(current_user.id)
+    @group_comments = GroupComment.new
   end
 
   def new

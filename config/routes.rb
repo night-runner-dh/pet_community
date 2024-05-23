@@ -41,6 +41,8 @@ root to: 'public/homes#top'
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
+  
+  
     resources :users, only: [:show] do
       resources :favorites, only: [:index]
       resource :relationships, only: [:create, :destroy]
@@ -50,6 +52,7 @@ root to: 'public/homes#top'
     
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
       resource :group_users, only: [:create, :destroy]
+      resources :group_comments, only: [:create, :destroy]
     end
     
   end
