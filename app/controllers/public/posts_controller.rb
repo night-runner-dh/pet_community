@@ -17,8 +17,7 @@ class Public::PostsController < ApplicationController
   end
   
   def my_posts
-    @posts = Post.where(user_id: current_user.id)
-    
+    @posts = Post.where(user_id: current_user.id).page(params[:page]).per(5)
   end
   
   def image_index

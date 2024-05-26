@@ -6,12 +6,11 @@
     <div class = "text-center">プロフィール画像
 <div class="col-10 ml-5" style="display: flex; justify-content: center; align-items: center;">
     
-<%# if post.image.present? %>
-<%#= image_tag post.image, size: "200x200" %>
-<%= image_tag "shiba1.jpg", size: "250x250" %>
-<%#= image_tag user.get_profile_image, size:'100x100' %>
-<%# end %>
-
+<% if @user.get_profile_image.present? %>
+  <%= image_tag @user.get_profile_image, alt: "プロフィール画像" %>
+<% else %>
+  <%= image_tag "default-image.jpg", size: "200x200", alt: "デフォルト画像" %>
+<% end %>
 </div>
 </div>
 <div class = "col-7">

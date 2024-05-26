@@ -17,7 +17,7 @@ has_one_attached :image
  end
 
 
-# 検索方法分岐
+# 検索方法分岐　一応完全一致や前半後半一致なども
   def self.looks(search, word)
     #if search == "perfect_match"
      # @post = Post.where("title LIKE?","#{word}")

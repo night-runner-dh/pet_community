@@ -10,9 +10,10 @@
   <tbody>
     <% groups.each do |group| %>
     <tr>
-      <td><%#= image_tag group.get_group_image, size: "50x50" %></td>
+      <td></td>
       <td><%= link_to group.name, public_group_path(group) %></td>
       <td><%= group.users.count %></td>
+      <td></td>
     </tr>
     <% end %>
   </tbody>

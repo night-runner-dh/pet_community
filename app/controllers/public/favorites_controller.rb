@@ -1,6 +1,6 @@
 class Public::FavoritesController < ApplicationController
   def index
-    @post_favorites = current_user.favorites
+    @post_favorites = current_user.favorites.page(params[:page]).per(10)
 
   end
 

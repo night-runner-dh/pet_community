@@ -1,6 +1,6 @@
 <div class="container">
   <div class = "col mx-auto">
-    <%= link_to '戻る', 'javascript:history.back()', class: "mr-4" %>
+    <%= link_to '戻る', admin_homes_top_path, class: "mr-4" %>
  <%= link_to "削除", admin_post_path(@post), class: "btn alert-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
   </div>
   <div class="col mx-auto text-center  post-col"> 

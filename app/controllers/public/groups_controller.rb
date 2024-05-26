@@ -3,7 +3,7 @@ class Public::GroupsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy, :permits]
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(10)
     @user = User.find(current_user.id)
   end
 

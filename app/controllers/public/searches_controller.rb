@@ -7,11 +7,11 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
 
     if @range == "User"
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:search], params[:word]).page(params[:page]).per(10)
     elsif @range == "Post"
-      @posts = Post.looks(params[:search], params[:word])
+      @posts = Post.looks(params[:search], params[:word]).page(params[:page]).per(10)
     else @range == "Group"
-      @groups = Group.looks(params[:search], params[:word])
+      @groups = Group.looks(params[:search], params[:word]).page(params[:page]).per(10)
     end
   end
 

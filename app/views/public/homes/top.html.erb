@@ -21,7 +21,7 @@
           <p class="card-text">説明：<%= truncate(post.body, length: 20) %></p>
           <%= link_to "Show", public_post_path(post.id), class: "show-button" %>
           <span><i class="fas fa-user"></i> By <%= post.user.name %>  </span>
-          <p><%= link_to "#{post.post_comments.count} コメント", public_post_path(post.id) %></p>
+          <p>コメント数:<%= post.post_comments.count%>　 ♥<%= post.favorites.count %> いいね</p>
         </div>
       </div>
     </div>

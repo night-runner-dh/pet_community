@@ -10,7 +10,7 @@ class Admin::PostsController < ApplicationController
 
   def my_posts
    @user = User.find(params[:user_id])
-  @posts = Post.where(user_id: @user.id)
+  @posts = Post.where(user_id: @user.id).page(params[:page]).per(5)
   end
 
   def destroy

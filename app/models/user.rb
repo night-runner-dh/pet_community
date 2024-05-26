@@ -25,6 +25,10 @@ class User < ApplicationRecord
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
   
+  
+  has_one_attached :profile_image
+  
+  
   # 指定したユーザーをフォローする
   def follow(user)
     active_relationships.create(followed_id: user.id)
@@ -54,6 +58,11 @@ class User < ApplicationRecord
     end
   end
   
-  
-  
+  def get_profile_image
+  unless profile_image.attached?
+    file_path = Rails.root.join('app/assets/images/pet_sample2.jpg')
+    profile_image.attach(io: File.open(file_path), filename: 'pet_sample2.jpg', content_type: 'image/jpeg')
+  end
+  profile_image.variant(resize_to_limit: [200, 200]).processed
+end
 end

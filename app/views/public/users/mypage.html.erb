@@ -4,10 +4,11 @@
 </div>
 <div class = "row">
 <div class="col-5 ml-5" style="display: flex; justify-content: center; align-items: center;">
-<%# if post.image.present? %>
-<%#= image_tag post.image, size: "200x200" %>
-<%# end %>
-ここにプロフィール画像を表示予定
+<% if @user.get_profile_image.present? %>
+  <%= image_tag @user.get_profile_image, alt: "プロフィール画像" %>
+<% else %>
+  <%= image_tag "default-image.jpg", size: "200x200", alt: "デフォルト画像" %>
+<% end %>
 </div>
 <div class = "col-4">
 <p>ハンドルネーム : <%= @user.name %></p>

@@ -4,6 +4,10 @@
       <h2>グループ一覧</h2>
       <%= render 'index', groups: @groups %>
     </div>
-
+  </div>
+  <div class = "row">
+    <div class="mx-auto">
+      <%= paginate @groups %>
+    </div>
   </div>
 </div>

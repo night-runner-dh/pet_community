@@ -8,20 +8,21 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
+      <th></th>
+      <th>ハンドルネーム</th>
       <th colspan="4"></th>
+      <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
+        <td></td>
         <td><%= user.name %></td>
         <td><%= link_to 'Show', admin_user_path(id: user.id) %></td>
-        <td>フォロー数: <%#= user.followings.count %></td>
-        <td>フォロワー数: <%#= user.followers.count %></td>
-        <td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
+        <td>フォロー数: <%= user.followings.count %></td>
+        <td>フォロワー数: <%= user.followers.count %></td>
+        <td></td>
         <% if user.is_active? %>
           <td class="text-success">　有効</td>
         <% else %>
@@ -31,6 +32,11 @@
      
     <% end %>
     
-    <%#= link_to "グループを作成する", new_group_path %>｜<%#= link_to "グループ一覧", groups_path %>
   </tbody>
 </table>
+  <div class = "row">
+    <div class="mx-auto">
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

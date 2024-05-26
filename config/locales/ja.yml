@@ -6,6 +6,10 @@ ja:
         body: "本文"
       user:
         name: "ハンドルネーム"
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
+        remember_me: "ログイン情報を記憶する"
     errors:
       models:
         user:

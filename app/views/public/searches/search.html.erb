@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <th></th>
-          <th>name</th>
+          <th>ハンドルネーム</th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -25,6 +25,7 @@
            <td><%= link_to 'Show', admin_user_path(id: user.id) %></td>
          </tr>
         <% end %>
+        <%= paginate(@users) %>
       </tbody>
     <% elsif @range == "Post"%>
       <!--管理者用検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
@@ -49,14 +50,15 @@
             <td><%= link_to 'Show', admin_post_path(post.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@posts) %>
       </tbody>
     <% else @range == "Group"%>
      <!--管理者用検索対象モデルがUserではない時(= 検索対象モデルがgroupの時) -->
       <thead>
         <tr>
           <th></th>
-          <th>タイトル</th>
-          <th>内容</th>
+          <th>グループ名</th>
+          <th>紹介文</th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -73,6 +75,7 @@
             <td><%= link_to 'Show', admin_group_path(group.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@groups) %>
       </tbody>
     <% end %>
 </table>
@@ -82,7 +85,7 @@
       <thead>
         <tr>
           <th></th>
-          <th>name</th>
+          <th>ハンドルネーム</th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -90,12 +93,14 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
+            <td></td>
             <td><%= user.name %></td>
             <td><%= link_to 'Show', public_user_path(id: user.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@users) %>
       </tbody>
+      
     <% elsif @range == "Post" %>
       <!--検索対象モデルがUserではない時(= 検索対象モデルがpostの時) -->
       <thead>
@@ -117,21 +122,22 @@
             <td><%= link_to 'Show', public_post_path(post.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@posts) %>
       </tbody>
         <% else @range == "Group"%>
      <!--管理者用検索対象モデルがUserではない時(= 検索対象モデルがgroupの時) -->
       <thead>
         <tr>
           <th></th>
-          <th>タイトル</th>
-          <th>内容</th>
+          <th>グループ名</th>
+          <th>紹介文</th>
           <th colspan="4"></th>
         </tr>
       </thead>
       <tbody>
         <% @groups.each do |group| %>
           <tr>
-            <td><%#= image_tag book.user.get_profile_image, size:'50x50' %></td>
+            <td></td>
             <td>
               <span> <%= group.name %></span>
             </td>
@@ -142,6 +148,8 @@
           </tr>
         <% end %>
       </tbody>
+      <%= paginate(@groups) %>
     <% end %>
     </table>
+    
   <% end %>

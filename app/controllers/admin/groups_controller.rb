@@ -6,7 +6,7 @@ def show
 end
 
 def index
-  @groups = Group.all
+  @groups = Group.page(params[:page]).per(10)
 end
 
 def destroy
