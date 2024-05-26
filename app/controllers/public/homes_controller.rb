@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-  @post = Post.all
+  @post = Post.page(params[:page]).per(5)
   end
 
   def about

@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.all
+    @post = Post.page(params[:page]).per(5)
   end
 
   def show
@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
     
     if @post.save
       flash[:notice] = "投稿しました。"
-      redirect_to public_posts_path(@post), notice: "投稿しました。"
+      redirect_to public_posts_path(@post.id), notice: "投稿しました。"
     else
       flash[:alert] = "投稿に失敗しました。"
       @posts = Post.all
