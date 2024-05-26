@@ -7,10 +7,10 @@ comment = current_user.group_comments.new(group_comment_params)
 comment.group_id = params[:group_id]
 
 if comment.save
-  redirect_to public_group_path(group)
+  redirect_to public_group_path(group), notice: "コメントを投稿しました。"
 else
   flash[:error] = comment.errors.full_messages.first
-  redirect_to public_group_path(group)
+  redirect_to public_group_path(group), alert: "コメントの投稿に失敗しました。"
 end
   
   
@@ -37,7 +37,7 @@ def destroy
   @group.destroy
   #PostComment.find(params[:id]).destroy
   #redirect_to public_post_path(params[:post_id])
- redirect_back(fallback_location: root_path)
+  redirect_back(fallback_location: root_path, notice: "コメントを削除しました。")
 end
 
 

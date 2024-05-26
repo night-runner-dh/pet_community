@@ -4,7 +4,11 @@
  <div class ="row">
  <div class = "col-6 mx-auto">
      <p>現在投稿されている投稿画像</p>
- <%= image_tag @post.image, size: "200x200" %>
+    <%if @post.image.present? %>
+        <%= image_tag @post.image, size: "200x200" %>
+    <% else%>
+      <p class = "denger">画像データがありません。</p>
+    <% end %>
  </div>
  </div>
 <%= form_with model: @post, url: public_post_path, method: :patch, class: 'col-6 mx-auto' do |f| %>

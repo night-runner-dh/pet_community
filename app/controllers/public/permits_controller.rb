@@ -5,7 +5,7 @@ class Public::PermitsController < ApplicationController
     @group = Group.find(params[:group_id])
     permit = current_user.permits.new(group_id: params[:group_id])
     permit.save
-    redirect_to request.referer, notice: "グループへ参加申請をしました"
+    redirect_to request.referer, notice: " グループへ参加申請をしました"
   end
 
   def destroy

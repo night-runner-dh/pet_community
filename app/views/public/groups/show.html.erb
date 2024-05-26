@@ -54,7 +54,6 @@
         </table>
 
       <% @group.group_comments.each do |group_comment| %>
-        <hr>
           <div>
             <li>内容：<%= group_comment.comment %></li>
             <li><%= group_comment.user.name %>さんのメッセージ</li><li><%= group_comment.created_at %>に送信済み</li>
@@ -64,7 +63,12 @@
           </div>
         <hr>
       <% end %>
-
+      <div>
+      <%= paginate @group_comment %>
+      </div>
+      <div>
+        <br>
+      </div>
       <div>
         <% if @group.group_users.exists?(user_id: current_user.id) || @group.owner_id == current_user.id %>
           <%= form_with url: public_group_group_comments_path(@group) do |f| %>
@@ -77,6 +81,7 @@
     </div>
   </div>
 </div>
+
 
 <%# @group_comments.each do |group_comment| %>
         <!--<hr>
