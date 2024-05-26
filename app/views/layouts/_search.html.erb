@@ -2,7 +2,7 @@
   <div class="search_form">
     <%= form_with url: public_search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
-      <%= f.select :range, options_for_select([['ユーザー', 'User'], ['投稿記事', 'Post']]) %>
+      <%= f.select :range, options_for_select([['ユーザー', 'User'], ['投稿記事', 'Post'],['グループ','Group']]) %>
       <%#= f.select :search, options_for_select([["部分検索","partial_match"]]) %>
       <%= f.submit "検索", class: "btn-sm btn-primary" %>
     <% end %>
@@ -10,7 +10,7 @@
 <% elsif admin_signed_in? %>
   <%= form_with url: public_search_path, local: true, method: :get do |f| %>
     <%= f.text_field :word %>
-    <%= f.select :range, options_for_select([['ユーザー', 'User'], ['投稿記事', 'Post']]) %>
+    <%= f.select :range, options_for_select([['ユーザー', 'User'], ['投稿記事', 'Post'],['グループ','Group']]) %>
     <%#= f.select :search, options_for_select([["部分検索","partial_match"]]) %>
     <%= f.submit "検索", class: "btn-sm btn-primary" %>
   <% end %>

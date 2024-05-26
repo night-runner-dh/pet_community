@@ -65,8 +65,11 @@ root to: 'public/homes#top'
     get 'posts/my_posts' => 'posts#my_posts', as: :my_posts
     resources :users, only: [:show,:edit,:update]
   
-    resources :posts, only: [:show,:update, :index]
-  
+    resources :posts, only: [:show,:update, :index, :destroy]
+    resources :groups, only: [:index, :destroy, :show] do
+      resource :group_comments, only: [:destroy]
+    end
+    
   end
 
 

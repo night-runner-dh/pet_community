@@ -12,6 +12,26 @@ class Group < ApplicationRecord
   #def get_group_image
    # (group_image.attached?) ? group_image : 'no_image.jpg'
   #end
+  
+  # 検索方法分岐
+  def self.looks(search, word)
+    #if search == "perfect_match"
+     # @post = Post.where("title LIKE?","#{word}")
+    #elsif search == "forward_match"
+      #@post = Post.where("title LIKE?","#{word}%")
+    #elsif search == "backward_match"
+      #@post = Post.where("title LIKE?","%#{word}")
+    if search == "partial_match"
+      @group = Group.where("title LIKE ? OR body LIKE ?", "%#{word}%", "%#{word}%")
+    else
+      @group = Group.all
+    end
+  end
+
+  
+  
+  
+  
 
   def is_owned_by?(user)
     owner.id == user.id

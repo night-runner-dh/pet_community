@@ -1,7 +1,7 @@
 class Admin::PostsController < ApplicationController
   
   def index
-    @post = Post.all
+    @post = Post.page(params[:page]).per(5)
   end
   
   def show
@@ -17,12 +17,12 @@ class Admin::PostsController < ApplicationController
         @post = Post.find(params[:id])
     if @post.destroy
         respond_to do |format|
-          format.html { redirect_to public_posts_path, notice: "削除に成功しました。" }
+          format.html { redirect_to admin_posts_path, notice: "削除に成功しました。" }
           format.js   # 追加する部分
         end
     else
         respond_to do |format|
-          format.html { redirect_to public_post_path(@post), alert: "削除に失敗しました。" }
+          format.html { redirect_to admin_post_path(@post), alert: "削除に失敗しました。" }
           format.js   # 追加する部分
         end
     end

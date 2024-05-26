@@ -51,9 +51,9 @@
             <% end %>
           </li>          
           <li>
-            <%#=  link_to まだルートしてないpath ,class: 'nav-link text-light' do %>
+            <%=  link_to admin_groups_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> グループ一覧 (管理用)
-            <%# end %>
+            <% end %>
           </li>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
