@@ -13,20 +13,21 @@
       <thead>
         <tr>
           <th></th>
-          <th>name</th>
+          <th>ハンドルネーム</th>
           <th colspan="4"></th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
          <tr>
-           <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
+           <td></td>
            <td><%= user.name %></td>
            <td><%= link_to 'Show', admin_user_path(id: user.id) %></td>
          </tr>
         <% end %>
+        <%= paginate(@users) %>
       </tbody>
-    <% else %>
+    <% elsif @range == "Post"%>
       <!--管理者用検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
       <thead>
         <tr>
@@ -39,14 +40,42 @@
       <tbody>
         <% @posts.each do |post| %>
           <tr>
-            <td><%#= image_tag book.user.get_profile_image, size:'50x50' %></td>
+            <td></td>
             <td>
               <span> <%= post.title %></span>
             </td>
-            <td><%= post.body %></td>
+            <td>
+              <%= truncate(post.body, length: 20) %>
+              </td>
             <td><%= link_to 'Show', admin_post_path(post.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@posts) %>
+      </tbody>
+    <% else @range == "Group"%>
+     <!--管理者用検索対象モデルがUserではない時(= 検索対象モデルがgroupの時) -->
+      <thead>
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>紹介文</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td></td>
+            <td>
+              <span> <%= group.name %></span>
+            </td>
+            <td>
+              <%= truncate(group.introduction, length: 20) %>
+              </td>
+            <td><%= link_to 'Show', admin_group_path(group.id) %></td>
+          </tr>
+        <% end %>
+        <%= paginate(@groups) %>
       </tbody>
     <% end %>
 </table>
@@ -56,7 +85,7 @@
       <thead>
         <tr>
           <th></th>
-          <th>name</th>
+          <th>ハンドルネーム</th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -64,13 +93,15 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%#= image_tag user.get_profile_image, size: '50x50' %></td>
+            <td></td>
             <td><%= user.name %></td>
             <td><%= link_to 'Show', public_user_path(id: user.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@users) %>
       </tbody>
-    <% else %>
+      
+    <% elsif @range == "Post" %>
       <!--検索対象モデルがUserではない時(= 検索対象モデルがpostの時) -->
       <thead>
         <tr>
@@ -83,15 +114,42 @@
       <tbody>
         <% @posts.each do |post| %>
           <tr>
-            <td><%#= image_tag book.user.get_profile_image, size:'50x50' %></td>
+            <td></td>
             <td>
               <span> <%= post.title %></span>
             </td>
-            <td><%= post.body %></td>
+            <td><%= truncate(post.body, length: 25) %></td>
             <td><%= link_to 'Show', public_post_path(post.id) %></td>
           </tr>
         <% end %>
+        <%= paginate(@posts) %>
       </tbody>
+        <% else @range == "Group"%>
+     <!--管理者用検索対象モデルがUserではない時(= 検索対象モデルがgroupの時) -->
+      <thead>
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>紹介文</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td></td>
+            <td>
+              <span> <%= group.name %></span>
+            </td>
+            <td>
+              <%= truncate(group.introduction, length: 20) %>
+              </td>
+            <td><%= link_to 'Show', public_group_path(group.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <%= paginate(@groups) %>
     <% end %>
     </table>
+    
   <% end %>

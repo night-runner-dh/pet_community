@@ -1,7 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @users = User.all
-    #@users = User.find(params[:id])
+    @users = User.page(params[:page]).per(10)
   end
 
   def about

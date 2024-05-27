@@ -1,0 +1,14 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>グループ一覧</h2>
+      <%= link_to "グループを作成する", new_public_group_path %>
+      <%= render 'index', groups: @groups %>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="mx-auto">
+      <%= paginate @groups %>
+    </div>
+  </div>
+</div>

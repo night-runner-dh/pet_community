@@ -11,6 +11,11 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :permits, dependent: :destroy
+  has_many :groups, through: :group_users
+  has_many :group_comments, dependent: :destroy
+  
   
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォローされている関連付け
@@ -19,6 +24,10 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :followed
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
+  
+  
+  has_one_attached :profile_image
+  
   
   # 指定したユーザーをフォローする
   def follow(user)
@@ -35,20 +44,26 @@ class User < ApplicationRecord
   
   # 検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
+    #if search == "perfect_match"
+      #@user = User.where("name LIKE?", "#{word}")
       #今回前方一致、後方一致の検索方法は採用しない為
     #elsif search == "forward_match"
       #@user = User.where("name LIKE?","#{word}%")
     #elsif search == "backward_match"
       #@user = User.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
+
+    #if search == "partial_match"
       @user = User.where("name LIKE?","%#{word}%")
-    else
-      @user = User.all
-    end
+    #else
+      #@user = User.all
+    #end
   end
   
-  
-  
+  def get_profile_image
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [200, 200]).processed
+  end
 end

@@ -15,7 +15,7 @@
           </li>
           <li>
             <%=  link_to public_my_page_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> マイページ
+              <i class="fa-solid fa-user-large"></i> マイページ
             <% end %>
           </li>
           <li>
@@ -25,7 +25,12 @@
           </li>
           <li>
             <%=  link_to public_image_index_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> 画像一覧
+              <i class="fa-solid fa-paw"></i> 画像一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to public_groups_path ,class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-people-group"></i></i> グループ一覧
             <% end %>
           </li>
           <li>
@@ -42,7 +47,7 @@
         <% elsif admin_signed_in? %>
           <li>
             <%= link_to admin_homes_top_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> ユーザー一覧 (管理用）
+              <i class="fas fa-users"></i> ユーザー一覧 (管理用）
             <% end %>
           </li>
           <li>
@@ -51,9 +56,9 @@
             <% end %>
           </li>          
           <li>
-            <%#=  link_to まだルートしてないpath ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> グループ一覧 (管理用)
-            <%# end %>
+            <%=  link_to admin_groups_path ,class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-people-group"></i> グループ一覧 (管理用)
+            <% end %>
           </li>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
@@ -74,7 +79,7 @@
           </li>
           <li>
             <%=  link_to public_image_index_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> 画像一覧
+              <i class="fa-solid fa-paw"></i> 画像一覧
             <% end %>
           </li>
           <li>
@@ -89,6 +94,14 @@
           </li>
         <% end %>
         </ul>
+      </div>
+      
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
+      <div class="ml-auto">
+        <%= render 'layouts/search' %>
       </div>
     </div>
   </nav>

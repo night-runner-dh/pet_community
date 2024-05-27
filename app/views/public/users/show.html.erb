@@ -1,30 +1,42 @@
-<div class="container px-5 px-sm-0">
-   <div class="row">  
- <div class="col-md-8 offset-md-1">
-  
-<h2>ユーザー詳細</h2>
-<div class = "mt-4">プロフィール画像
-<%= image_tag "shiba1.jpg", size: "200x200" %>
+<div class = "container">
+  <div>
+    <h2>ユーザー詳細</h2><br>
+  </div>
+  <div class = "row">
+    <div class = "text-center">プロフィール画像
+      <div class="col-10 ml-5" style="display: flex; justify-content: center; align-items: center;">
+    
+        <% if @user.get_profile_image.present? %>
+          <%= image_tag @user.get_profile_image, alt: "プロフィール画像" %>
+        <% else %>
+          <%= image_tag "default-image.jpg", size: "200x200", alt: "デフォルト画像" %>
+        <% end %>
+      </div>
+    </div>
+    <div class = "col-7">
+      <table class="table mt-4">
+        <tr></tr>
+        <tr>
+	      <th>ハンドルネーム:</th>
+	      <th><%= @user.name %></th>
+	      <td id="public_relationships_btn<%= @user.id %>">
+	        <%= render "public/relationships/btn", user: @user %>
+	      </td>
+        </tr>
+        <tr>
+          <th>フォロー</th>
+          <td>フォロー数: <%= @user.followings.count %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>フォロワー</th>
+          <td>フォロワー数: <%= @user.followers.count %></td>
+          <td></td>
+        </tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </table>
+    </div>
+  </div>
 </div>
-
-<table class="table mt-4">
-  <tr><%#= image_tag user.get_profile_image, size:'100x100' %></tr>
-  <tr>
-	  <th>ハンドルネーム:</th>
-	  <th><%= @user.name %></th>
-	  <td><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></td>
-  </tr>
-  <tr>
-    <th>フォロー</th>
-    <td>フォロー数: <%= @user.followings.count %></td>
-    <td></td>
-  </tr>
-  <tr>
-    <th>フォロワー</th>
-     <td>フォロワー数: <%= @user.followers.count %></td>
-    <td></td>
-  </tr>
-   <td></td>
-   <td></td>
-   <td></td>
-</table>
