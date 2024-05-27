@@ -29,38 +29,37 @@
 
  <hr>
  <div class = "container">
- <div class = "col mx-auto">
+   <div class = "col mx-auto">
 
-<div>
-  <p><h5>コメント欄</h5></p>
+    <div>
+      <p><h5>コメント欄</h5></p>
 
- <% @comments.each do |post_comment| %>
-   <div class = "row">
-   <div class = "col-4">
-   by <%= post_comment.user.name %>さんのコメント・<%= post_comment.created_at.strftime('%Y/%m/%d') %>
-   </div>
-   <div class = "col-3">
-  <% if post_comment.user == current_user %>
-  <%= link_to "コメント削除", public_post_post_comments_path(post_comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
-  <% end %>
-  </div>
-  </div>
-  <div>
-   <p><%= post_comment.comment %></p>
- </div>
- <% end %>
-</div>
-  <div>
+      <% @comments.each do |post_comment| %>
+        <div class = "row">
+          <div class = "col-4">
+            by <%= post_comment.user.name %>さんのコメント・<%= post_comment.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class = "col-3">
+            <% if post_comment.user == current_user %>
+              <%= link_to "コメント削除", public_post_post_comments_path(post_comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <p><%= post_comment.comment %></p>
+        </div>
+      <% end %>
+    </div>
+    <div>
       <%= paginate @comments %>
-      </div>
-<div>
-  <% if current_user %>
-  <%= form_with url: public_post_post_comments_path(@post) do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントは、ここに入力してください" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-<% end %>
-</div>
-
-</div>
+    </div>
+    <div>
+      <% if current_user %>
+        <%= form_with url: public_post_post_comments_path(@post) do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントは、ここに入力してください" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

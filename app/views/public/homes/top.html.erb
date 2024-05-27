@@ -4,11 +4,11 @@
     <div class="card-body">
       <div class="row">
         <div class="col-3" style="display: flex; justify-content: center; align-items: center;">
-    <%= link_to public_post_path(post.id) do %>
-      <% if post.image.present? %>
-        <%= image_tag post.image, size: "130x130" %>
-      <% end %>
-    <% end %>
+          <%= link_to public_post_path(post.id) do %>
+            <% if post.image.present? %>
+              <%= image_tag post.image, size: "130x130" %>
+            <% end %>
+          <% end %>
 
        
         </div>

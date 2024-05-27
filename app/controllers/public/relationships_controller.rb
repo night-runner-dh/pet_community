@@ -10,7 +10,7 @@ class Public::RelationshipsController < ApplicationController
   def destroy
     user = User.find(params[:user_id])
     current_user.unfollow(user)
-  @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
   end
   
   def followings

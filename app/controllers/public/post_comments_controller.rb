@@ -9,7 +9,9 @@ def create
     redirect_to public_post_path(post)
   else
     flash[:error] = comment.errors.full_messages.first
-    redirect_to public_post_path(post)
+    @post = Post.find(params[:post_id]) # 修正点: 再度@postを取得する
+    @comments = @post.post_comments.page(params[:page]) # 修正点: @commentsを再度設定する
+    render template: 'public/posts/show', id: @post.id # 修正点: @post.idを渡す
   end
 end
 
