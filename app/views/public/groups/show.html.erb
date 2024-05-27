@@ -53,7 +53,7 @@
           </tbody>
         </table>
 
-      <% @group.group_comments.each do |group_comment| %>
+      <% @group_comments.each do |group_comment| %>
           <div>
             <p>内容：<%= group_comment.comment %></p>
             <%= group_comment.user.name %>さんのメッセージ<%= group_comment.created_at.strftime('%Y/%m/%d') %>に送信済み

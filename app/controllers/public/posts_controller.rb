@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.post_comments.page(params[:page]).per(10)
     @post_comment = PostComment.new
   end
   
