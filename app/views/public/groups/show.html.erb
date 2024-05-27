@@ -58,7 +58,7 @@
             <p>内容：<%= group_comment.comment %></p>
             <%= group_comment.user.name %>さんのメッセージ<%= group_comment.created_at.strftime('%Y/%m/%d') %>に送信済み
             <% if group_comment.user == current_user %>
-              <%= link_to "コメント削除", public_group_group_comment_path(group_comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to "コメント削除", public_group_group_comment_path(group_comment.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
             <% end %>
           </div>
         <hr>

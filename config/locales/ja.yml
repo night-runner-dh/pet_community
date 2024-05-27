@@ -20,6 +20,10 @@ ja:
               blank: "アドレスが空欄です"
             password:
               blank: "が空欄です"
+            email:
+              taken: "は既に使用されています"
+            password_confirmation:
+              confirmation: "とパスワードが一致しません"
         post:
           attributes:
             title:

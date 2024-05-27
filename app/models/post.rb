@@ -25,11 +25,11 @@ has_one_attached :image
       #@post = Post.where("title LIKE?","#{word}%")
     #elsif search == "backward_match"
       #@post = Post.where("title LIKE?","%#{word}")
-    if search == "partial_match"
+    #if search == "partial_match"
       @post = Post.where("title LIKE ? OR body LIKE ?", "%#{word}%", "%#{word}%")
-    else
-      @post = Post.all
-    end
+    #else
+      #@post = Post.all
+    #end
   end
 
 

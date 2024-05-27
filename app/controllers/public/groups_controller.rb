@@ -9,7 +9,8 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @group_comments = @group.group_comments.page(params[:page]).per(10)
+    @group_comments = @group.group_comments.order(created_at: :desc).page(params[:page]).per(10)
+    #@group_comments = @group.group_comments.page(params[:page]).per(10)
     @group_comment = GroupComment.new
   end
 

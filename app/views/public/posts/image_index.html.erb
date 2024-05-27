@@ -1,9 +1,9 @@
 <% posts = @posts %>
-<% dummy_cards, image_cards = posts.partition { |post| post.image.present? } %>
+<% image_cards, noimg_cards = posts.partition { |post| post.image.present? } %>
 
 <div class="container">
   <div class="row">
-    <% (dummy_cards + image_cards).each_slice(4) do |group| %>
+    <% (image_cards).each_slice(4) do |group| %>
       <div class="row">
         <% group.each do |post| %>
           <% if post.image.present? %>
@@ -30,5 +30,11 @@
       </div>
     <% end %>
   </div>
-</div
->
+</div>
+  <div class = "row">
+    <div class="mx-auto">
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>
+  

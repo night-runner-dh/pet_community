@@ -21,11 +21,11 @@ class Group < ApplicationRecord
       #@post = Post.where("title LIKE?","#{word}%")
     #elsif search == "backward_match"
       #@post = Post.where("title LIKE?","%#{word}")
-    if search == "partial_match"
-      @group = Group.where("title LIKE ? OR body LIKE ?", "%#{word}%", "%#{word}%")
-    else
-      @group = Group.all
-    end
+    #if search == "partial_match"
+      @group = Group.where("name LIKE ? OR introduction LIKE ?", "%#{word}%", "%#{word}%")
+    #else
+      #@group = Group.all
+    #end
   end
 
   

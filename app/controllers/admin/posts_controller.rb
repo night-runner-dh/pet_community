@@ -1,16 +1,18 @@
 class Admin::PostsController < ApplicationController
   
   def index
-    @post = Post.page(params[:page]).per(5)
+    @post = Post.order(created_at: :desc).page(params[:page]).per(5)
+    #@post = Post.page(params[:page]).per(5)
   end
   
   def show
     @post = Post.find(params[:id])
+    @comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def my_posts
    @user = User.find(params[:user_id])
-  @posts = Post.where(user_id: @user.id).page(params[:page]).per(5)
+   @posts = Post.where(user_id: @user.id).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def destroy

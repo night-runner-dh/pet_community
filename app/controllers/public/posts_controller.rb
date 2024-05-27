@@ -8,21 +8,23 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.page(params[:page]).per(5)
+    @post = Post.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.post_comments.page(params[:page]).per(10)
+    #@comments = @post.post_comments.page(params[:page]).per(10)
+    @comments = @post.post_comments.order(created_at: :desc).page(params[:page]).per(10)
     @post_comment = PostComment.new
   end
   
   def my_posts
-    @posts = Post.where(user_id: current_user.id).page(params[:page]).per(5)
+    #@post = Post.order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(5)
   end
   
   def image_index
-    @posts = Post.all
+    @posts = Post.left_joins(:image_attachment).where.not(active_storage_attachments: { id: nil }).order(created_at: :desc).page(params[:page]).per(20)
   end
   
   def create

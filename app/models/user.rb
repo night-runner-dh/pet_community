@@ -51,11 +51,12 @@ class User < ApplicationRecord
       #@user = User.where("name LIKE?","#{word}%")
     #elsif search == "backward_match"
       #@user = User.where("name LIKE?","%#{word}")
-    if search == "partial_match"
+
+    #if search == "partial_match"
       @user = User.where("name LIKE?","%#{word}%")
-    else
-      @user = User.all
-    end
+    #else
+      #@user = User.all
+    #end
   end
   
   def get_profile_image

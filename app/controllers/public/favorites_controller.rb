@@ -1,7 +1,6 @@
 class Public::FavoritesController < ApplicationController
   def index
-    @post_favorites = current_user.favorites.page(params[:page]).per(10)
-
+    @post_favorites = current_user.favorites.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def create

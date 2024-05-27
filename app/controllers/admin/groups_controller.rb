@@ -2,7 +2,8 @@ class Admin::GroupsController < ApplicationController
 
 def show
     @group = Group.find(params[:id])
-    @group_comment = @group.group_comments.page(params[:page]).per(10)
+    @group_comment = @group.group_comments.order(created_at: :desc).page(params[:page]).per(10)
+    #group_comment = @group.group_comments.page(params[:page]).per(10)
 end
 
 def index

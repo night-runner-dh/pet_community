@@ -35,7 +35,7 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user=User.find(current_user.id)
-    @user.update(is_active: false)
+    @user.update(is_active: false, email: @user.email + "_" + Time.current.strftime('%Y%m%d%H%M%S'))
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
