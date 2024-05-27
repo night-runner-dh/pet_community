@@ -19,7 +19,9 @@
   <tr>
 	  <th>ハンドルネーム:</th>
 	  <th><%= @user.name %></th>
-	  <td><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></td>
+	  <td id="public_relationships_btn<%= @user.id %>">
+	      <%= render "public/relationships/btn", user: @user %>
+	  </td>
   </tr>
   <tr>
     <th>フォロー</th>
