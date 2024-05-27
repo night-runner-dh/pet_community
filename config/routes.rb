@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'groups/new'
+    get 'groups/index'
+    get 'groups/show'
+    get 'groups/edit'
+  end
   # 会員用
 # URL /users/sign_in ...
 devise_for :users, controllers: {
@@ -30,14 +36,27 @@ root to: 'public/homes#top'
     
     get 'posts/image_index' => 'posts#image_index', as: :image_index
     get 'post/my_posts/' => 'posts#my_posts', as: :my_posts
+    get "groups/:id/permits" => "groups#permits", as: :permits
     
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
+  
+  
     resources :users, only: [:show] do
-       resources :favorites, only: [:index]
+      resources :favorites, only: [:index]
+      resource :relationships, only: [:create, :destroy]
+  	  get "followings" => "relationships#followings", as: "followings"
+  	  get "followers" => "relationships#followers", as: "followers"
     end
+    
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+      resource :group_users, only: [:create, :destroy]
+      resource :permits, only: [:create, :destroy]
+      resources :group_comments, only: [:create, :destroy]
+    end
+    
     
   end
   namespace :admin do
@@ -46,8 +65,11 @@ root to: 'public/homes#top'
     get 'posts/my_posts' => 'posts#my_posts', as: :my_posts
     resources :users, only: [:show,:edit,:update]
   
-    resources :posts, only: [:show,:update, :index]
-  
+    resources :posts, only: [:show,:update, :index, :destroy]
+    resources :groups, only: [:index, :destroy, :show] do
+      resource :group_comments, only: [:destroy]
+    end
+    
   end
 
 
