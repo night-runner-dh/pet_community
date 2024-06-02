@@ -11,6 +11,11 @@
         <%= image_tag image, class: "img-fluid" %>
       <% end %>
     </div>
+    <div class="tag-box mt-3">
+      <% @post.tags.each do |tag| %>
+        <span class="label tag-button"><%= tag.name %></span>
+      <% end %>
+    </div>
     <div class = "col mx-auto">
       <h3><%= @post.title %></h3>
       <p>

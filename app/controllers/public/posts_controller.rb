@@ -30,8 +30,11 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    
+    tags = Vision.get_image_data(post_params[:image])
     if @post.save
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
       flash[:notice] = "投稿しました。"
       redirect_to root_path, notice: "投稿しました。"
     else
