@@ -13,7 +13,7 @@
     </div>
     <div class="tag-box mt-3">
       <% @post.tags.each do |tag| %>
-        <span class="label tag-button"><%= tag.name %></span>
+        <%= link_to tag.name, public_tag_path(name: tag.name), class: "label tag-button" %>
       <% end %>
     </div>
     <div class = "col mx-auto">

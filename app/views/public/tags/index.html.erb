@@ -1,5 +1,8 @@
+<div class = "container">
+<h1>Tag: <%= params[:name] %></h1>
+</div>
 <div class="card-list-container py-5">
-  <% @post.each do |post| %>
+  <% @posts.each do |post| %>
     <div class="card w-50 mx-auto mt-4 shadow-lg">
       <div class="card-body">
         <div class="row">
@@ -27,10 +30,11 @@
   <% end %>
   <div class = "row">
     <div class="mx-auto">
-      <%= paginate @post %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>
+
 <hr>
 <div class="container py-5">
   <h5>タグ一覧</h5>

@@ -33,3 +33,10 @@
     </div>
   </div>
 </div>
+<hr>
+<div class="container py-5">
+  <h5>タグ一覧</h5>
+  <% @tags.each do |tag| %>
+    <%= link_to tag.name, public_tag_path(name: tag.name), class: "label tag-button" %>
+  <% end %>
+</div>

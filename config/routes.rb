@@ -37,6 +37,7 @@ root to: 'public/homes#top'
     get 'posts/image_index' => 'posts#image_index', as: :image_index
     get 'post/my_posts/' => 'posts#my_posts', as: :my_posts
     get "groups/:id/permits" => "groups#permits", as: :permits
+    get '/tags/:name', to: 'tags#index', as: :tag
     
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
@@ -47,8 +48,8 @@ root to: 'public/homes#top'
     resources :users, only: [:show] do
       resources :favorites, only: [:index]
       resource :relationships, only: [:create, :destroy]
-  	  get "followings" => "relationships#followings", as: "followings"
-  	  get "followers" => "relationships#followers", as: "followers"
+  	  get "followings" => "relationships#followings", as: :followings
+  	  get "followers" => "relationships#followers", as: :followers
     end
     
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
