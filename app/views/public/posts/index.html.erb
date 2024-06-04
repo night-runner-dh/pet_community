@@ -34,7 +34,11 @@
 <hr>
 <div class="container py-5">
   <h5>タグ一覧</h5>
+  <div class="d-flex flex-wrap">
   <% @tags.each do |tag| %>
+  <div class = "my-2 mx-1">
     <%= link_to tag.name, public_tag_path(name: tag.name), class: "label tag-button" %>
+    </div>
   <% end %>
+  </div>
 </div>

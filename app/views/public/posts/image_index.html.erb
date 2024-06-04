@@ -2,7 +2,7 @@
 <% image_cards, noimg_cards = posts.partition { |post| post.image.present? } %>
 
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <% (image_cards).each_slice(4) do |group| %>
       <div class="row">
         <% group.each do |post| %>

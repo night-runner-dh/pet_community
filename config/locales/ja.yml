@@ -34,4 +34,6 @@ ja:
           blank: "が空です"
       messages:
         record_invalid: "無効なレコードです"
-        
+  views:
+    pagination:
+      truncate: '...'
