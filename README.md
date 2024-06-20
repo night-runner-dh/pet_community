@@ -32,7 +32,14 @@
  
 ## 設計書
 <!--テーマを設定・提出する時点では不要です-->
-​
+UIFlows<br>
+https://drive.google.com/file/d/139amFAaptWH8pOlAosGZwanlX25btMtj/view?usp=sharing<br>
+ER図<br>
+https://drive.google.com/file/d/1VCde8TxgyUGXpmLZIbcqax-LnL3jWCYQ/view?usp=sharing<br>
+テーブル定義書<br>
+https://docs.google.com/spreadsheets/d/1RyKKRUwNyUJd1Y4QrYKrRwWSG5cVsgMK23ga244JZG0/edit?usp=sharing<br>
+アプリケーション詳細設計<br>
+​https://docs.google.com/spreadsheets/d/1kV6bN4-P407L6D7OL63eoegNhmO037G8EYslNE4zmC4/edit?usp=sharing
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
