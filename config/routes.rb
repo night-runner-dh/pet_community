@@ -21,7 +21,7 @@ devise_for :admin, controllers: {
 
 root to: 'public/homes#top'
 
-
+#namespace :public do」は「scope module: :public do」に変更後、すべてのパス名からpublicを抜く
   namespace :public do
 
     get 'homes/top'

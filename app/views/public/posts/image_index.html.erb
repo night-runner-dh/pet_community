@@ -9,7 +9,7 @@
           <% if post.image.present? %>
             <div class="col-3 card mx-auto mt-4 shadow-lg" style="margin-left: 40px;">
               <%= link_to public_post_path(post.id) do %>
-              <%= image_tag post.image, size: "200x200" %>
+              <%= image_tag post.image, class: "index-img" %>
               <% end %>
             </div>
           <% else %>

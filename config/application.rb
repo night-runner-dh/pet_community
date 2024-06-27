@@ -13,6 +13,7 @@ module PetCommunity
     config.i18n.default_locale = :ja
     config.i18n.fallbacks = true
     config.paths.add 'lib', eager_load: true # 追加
+    config.time_zone = 'Tokyo'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

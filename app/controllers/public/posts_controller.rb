@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
         respond_to do |format|
-          format.html { redirect_to public_posts_path, notice: "削除に成功しました。" }
+          format.html { redirect_to root_path, notice: "削除に成功しました。" }
           format.js   # 追加する部分
         end
     else

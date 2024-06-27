@@ -9,8 +9,6 @@
               <%= image_tag post.image, size: "130x130" %>
             <% end %>
           <% end %>
-
-       
         </div>
         <div class="col-9">
           <p class="card-title">
@@ -22,6 +20,7 @@
           <%= link_to "Show", public_post_path(post.id), class: "show-button" %>
           <span><i class="fas fa-user"></i> By <%= post.user.name %>  </span>
           <p>コメント数:<%= post.post_comments.count%>　 ♥<%= post.favorites.count %> いいね</p>
+           <%= post.created_at.strftime('%Y/%m/%d %H:%M')  %>の投稿
         </div>
       </div>
     </div>
