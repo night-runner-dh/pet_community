@@ -25,7 +25,7 @@
    <p><%= post_comment.comment %></p>
    by <%= post_comment.user.name %>
    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-  <%= button_to "コメント削除", public_post_post_comments_path(post_comment.id), method: :delete %>
+  <%= button_to "コメント削除", post_post_comments_path(post_comment.id), method: :delete %>
  <% end %>
  <div>
    <%= paginate @comments %>

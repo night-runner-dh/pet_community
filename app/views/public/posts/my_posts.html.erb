@@ -13,7 +13,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-3" style="display: flex; justify-content: center; align-items: center;">
-              <%= link_to public_post_path(post.id) do %>
+              <%= link_to post_path(post.id) do %>
                 <% if post.image.present? %>
                   <%= image_tag post.image, size: "130x130" %>
                 <% end %>
@@ -21,12 +21,12 @@
             </div>
               <div class="col-9">
                 <p class="card-title">
-                <%= link_to(public_post_path(post.id), class: "text-dark") do %>
+                <%= link_to(post_path(post.id), class: "text-dark") do %>
                 <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
                 <% end %>
                 </p>
                 <p class="card-text">説明：<%= truncate(post.body, length: 20) %></p>
-                <%= link_to "Show", public_post_path(post.id), class: "show-button" %>
+                <%= link_to "Show", post_path(post.id), class: "show-button" %>
                 <span><i class="fas fa-user"></i> By <%= post.user.name %>  </span>
                 <p><%= post.post_comments.count%>コメント　 ♥<%= post.favorites.count %> いいね</p>
               </div>

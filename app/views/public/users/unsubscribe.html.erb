@@ -4,11 +4,11 @@
 これまでの投稿が閲覧できなくなります。</br>
 退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= link_to public_my_page_path, class: 'btn btn-sm btn-primary' do %>
+<%= link_to my_page_path, class: 'btn btn-sm btn-primary' do %>
 退会しない
 <% end %>
 
-<%= link_to public_withdraw_path, class: 'btn btn-sm btn-danger', method: :PATCH do %>
+<%= link_to withdraw_path, class: 'btn btn-sm btn-danger', method: :PATCH do %>
 退会する
 <% end %>
 

@@ -11,7 +11,7 @@
     <% groups.each do |group| %>
     <tr>
       <td></td>
-      <td><%= link_to group.name, public_group_path(group) %></td>
+      <td><%= link_to group.name, group_path(group) %></td>
       <td><%= group.users.count %></td>
       <td></td>
     </tr>

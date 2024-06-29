@@ -14,9 +14,9 @@ def after_sign_in_path_for(resource)
    when Admin
      admin_homes_top_path
    when User
-     public_homes_top_path
+     homes_top_path
    else
-     public_homes_about_path
+     homes_about_path
   end
 end
 end

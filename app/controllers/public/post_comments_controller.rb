@@ -6,10 +6,10 @@ def create
   comment.post_id = params[:post_id]
   
   if comment.save
-    redirect_to public_post_path(post), notice: "コメントを投稿しました"
+    redirect_to post_path(post), notice: "コメントを投稿しました"
   else
     flash[:error] = comment.errors.full_messages.first
-    redirect_to public_post_path(post), alert: "コメントの投稿に失敗しました。"
+    redirect_to post_path(post), alert: "コメントの投稿に失敗しました。"
   end
 end
 

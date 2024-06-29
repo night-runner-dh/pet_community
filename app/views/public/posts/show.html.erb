@@ -1,8 +1,8 @@
 <div class="container">
   <div class = "col mx-auto">
     <% if @post.user == current_user %>
-      <%= link_to '編集する', edit_public_post_path(@post.id), class: "btn  btn-success mr-4" %>
-      <%= link_to "削除", public_post_path(@post), class: "btn alert-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <%= link_to '編集する', edit_post_path(@post.id), class: "btn  btn-success mr-4" %>
+      <%= link_to "削除", post_path(@post), class: "btn alert-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
     <% end %>
     </div>
     <div class="col mx-auto text-center  post-col"> 
@@ -13,7 +13,7 @@
     </div>
     <div class="tag-box mt-3">
       <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, public_tag_path(name: tag.name), class: "label tag-button" %>
+        <%= link_to tag.name, tag_path(name: tag.name), class: "label tag-button" %>
       <% end %>
     </div>
     <div class = "col mx-auto">
@@ -45,7 +45,7 @@
           </div>
           <div class = "col-3">
             <% if post_comment.user == current_user %>
-              <%= link_to "コメント削除", public_post_post_comments_path(post_comment.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" }  %>
+              <%= link_to "コメント削除", post_post_comments_path(post_comment.id), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" }  %>
             <% end %>
           </div>
         </div>
@@ -59,7 +59,7 @@
     </div>
     <div>
       <% if current_user %>
-        <%= form_with url: public_post_post_comments_path(@post) do |f| %>
+        <%= form_with url: post_post_comments_path(@post) do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントは、ここに入力してください" %>
           <%= f.submit "送信する" %>
         <% end %>

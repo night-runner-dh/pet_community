@@ -17,7 +17,7 @@
     <% end %>
 </div>
 <div class="container mt-5">
-  <%= form_with model: @user,local:true, url: public_information_path, method: :patch do |f| %>
+  <%= form_with model: @user,local:true, url: information_path, method: :patch do |f| %>
     <% render "public/shared/error_messages", resource: @user %>
       <div class = "row">
         <label class = "col-lg-3">プロフィール画像</label>
@@ -39,7 +39,7 @@
       </div>
       <div class="form-group row offset-3">
         <div class="mx-3 mt-2"><%= f.submit "編集内容を保存",class: 'btn btn-sm btn-success' %></div>
-        <div class="mx-3 mt-2"><%= link_to public_unsubscribe_path,class: "btn btn-sm btn-danger" do %>退会する<% end %></div>
+        <div class="mx-3 mt-2"><%= link_to unsubscribe_path,class: "btn btn-sm btn-danger" do %>退会する<% end %></div>
       </div>
   <% end %>
 </div>

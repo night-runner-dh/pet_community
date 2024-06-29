@@ -95,7 +95,7 @@
           <tr>
             <td></td>
             <td><%= user.name %></td>
-            <td><%= link_to 'Show', public_user_path(id: user.id) %></td>
+            <td><%= link_to 'Show', user_path(id: user.id) %></td>
           </tr>
         <% end %>
         <%= paginate(@users) %>
@@ -119,7 +119,7 @@
               <span> <%= post.title %></span>
             </td>
             <td><%= truncate(post.body, length: 25) %></td>
-            <td><%= link_to 'Show', public_post_path(post.id) %></td>
+            <td><%= link_to 'Show', post_path(post.id) %></td>
           </tr>
         <% end %>
         <%= paginate(@posts) %>
@@ -144,7 +144,7 @@
             <td>
               <%= truncate(group.introduction, length: 20) %>
               </td>
-            <td><%= link_to 'Show', public_group_path(group.id) %></td>
+            <td><%= link_to 'Show', group_path(group.id) %></td>
           </tr>
         <% end %>
       </tbody>

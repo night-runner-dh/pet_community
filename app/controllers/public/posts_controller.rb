@@ -41,7 +41,7 @@ class Public::PostsController < ApplicationController
     else
       flash[:alert] = "投稿に失敗しました。"
       @posts = Post.all
-      flash[:redirect] = new_public_post_path
+      flash[:redirect] = new_post_path
       render :"public/posts/new"
     end
   end
@@ -53,7 +53,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to public_post_path(@post), notice: "編集に成功しました。"
+      redirect_to post_path(@post), notice: "編集に成功しました。"
     else
       @post = Post.find(params[:id])
       flash[:alert] = "編集に失敗しました。"  # バリデーションメッセージをセット
@@ -70,7 +70,7 @@ class Public::PostsController < ApplicationController
         end
     else
         respond_to do |format|
-          format.html { redirect_to public_post_path(@post), alert: "削除に失敗しました。" }
+          format.html { redirect_to post_path(@post), alert: "削除に失敗しました。" }
           format.js   # 追加する部分
         end
     end

@@ -23,7 +23,7 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_user.id
     if @group.save
       flash[:notice] = "グループを作成しました。"
-      redirect_to public_groups_path
+      redirect_to groups_path
     else
       flash[:alert] = "グループ作成に失敗しました。"
       render :new
@@ -36,7 +36,7 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to public_group_path
+      redirect_to group_path
     else
       render :edit
     end
@@ -46,12 +46,12 @@ class Public::GroupsController < ApplicationController
   @group = Group.find(params[:id])
     if @group.destroy
         respond_to do |format|
-          format.html { redirect_to public_groups_path, notice: "削除に成功しました。" }
+          format.html { redirect_to groups_path, notice: "削除に成功しました。" }
           format.js   # 追加する部分
         end
     else
         respond_to do |format|
-          format.html { redirect_to public_groups_path(@group), alert: "削除に失敗しました。" }
+          format.html { redirect_to groups_path(@group), alert: "削除に失敗しました。" }
           format.js   # 追加する部分
         end
     end
@@ -72,7 +72,7 @@ class Public::GroupsController < ApplicationController
     def ensure_correct_user
       @group = Group.find(params[:id])
       unless @group.owner_id == current_user.id
-        redirect_to public_groups_path(@group), alert: "グループオーナーのみ編集が可能です"
+        redirect_to groups_path(@group), alert: "グループオーナーのみ編集が可能です"
       end
     end
 end

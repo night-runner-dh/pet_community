@@ -38,7 +38,7 @@
           <div>
             <li>内容：<%= group_comment.comment %></li>
             <li><%= group_comment.user.name %>さんのメッセージ</li><li><%= group_comment.created_at.strftime('%Y/%m/%d') %>に送信済み</li>
-             <%= button_to "コメント削除", public_group_group_comment_path(group_comment.id), method: :delete %>
+             <%= button_to "コメント削除", group_group_comment_path(group_comment.id), method: :delete %>
           </div>
         <hr>
       <% end %>
