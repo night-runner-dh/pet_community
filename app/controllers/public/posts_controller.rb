@@ -55,10 +55,12 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "編集に成功しました。"
     else
-      @post = Post.find(params[:id])
-      flash[:alert] = "編集に失敗しました。"  # バリデーションメッセージをセット
+      flash.now[:alert] = @post.errors.full_messages.join('<br>').html_safe # バリデーションメッセージをセット
       render :edit
     end
+    #  @post = Post.find(params[:id])
+    #  flash[:alert] = "編集に失敗しました。" 
+    #  render :edit
   end
 
   def destroy
